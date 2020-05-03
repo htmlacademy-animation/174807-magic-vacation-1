@@ -1,25 +1,30 @@
 export default () => {
-  let header = document.querySelector(`.js-header`);
-  let menuToggler = document.querySelector(`.js-menu-toggler`);
-  let menuLinks = document.querySelectorAll(`.js-menu-link`);
+  const header = document.querySelector(`.js-header`);
+  const menuToggler = document.querySelector(`.js-menu-toggler`);
+  const menuLinks = document.querySelectorAll(`.js-menu-link`);
+  const hideMenu = () => {
+    header.classList.remove(`page-header--menu-opened`);
+    document.body.classList.remove(`menu-opened`);
+  };
+  const openMenu = () => {
+    header.classList.add(`page-header--menu-opened`);
+    document.body.classList.add(`menu-opened`);
+  };
 
   if (menuToggler) {
-    menuToggler.addEventListener(`click`, function () {
+    menuToggler.addEventListener(`click`, () => {
       if (header.classList.contains(`page-header--menu-opened`)) {
-        header.classList.remove(`page-header--menu-opened`);
-        document.body.classList.remove(`menu-opened`);
+        hideMenu();
       } else {
-        header.classList.add(`page-header--menu-opened`);
-        document.body.classList.add(`menu-opened`);
+        openMenu();
       }
     });
   }
 
   for (let i = 0; i < menuLinks.length; i++) {
-    menuLinks[i].addEventListener(`click`, function () {
+    menuLinks[i].addEventListener(`click`, () => {
       if (window.innerWidth < 1025) {
-        header.classList.remove(`page-header--menu-opened`);
-        document.body.classList.remove(`menu-opened`);
+        hideMenu();
       }
     });
   }
