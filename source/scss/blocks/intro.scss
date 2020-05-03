@@ -88,6 +88,7 @@
 
 .intro__message {
   flex: none;
+  opacity: 0;
   width: 50.9rem;
   max-width: 50%;
   text-transform: uppercase;
@@ -135,6 +136,10 @@
   }
 }
 
+.screen.active .intro__message {
+  animation: smallFadeInUp 1s both 0.5;
+}
+
 .intro__label {
   margin: 0 0 1.6rem;
   max-width: 25rem;
@@ -162,3 +167,5 @@
     font-size: 48px;
   }
 }
+
+
