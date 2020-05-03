@@ -56,7 +56,7 @@
     "source/sass/**/*.{sass,scss}"
   ],
   "engines": {
-    "node": ">= 10.16"
+    "node": "8.15"
   },
   "dependencies": {
     "swiper": "5.3.8",
