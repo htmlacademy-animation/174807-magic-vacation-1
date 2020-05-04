@@ -7,11 +7,43 @@
       pointer-events: auto;
     }
   }
+
+  &.social-block--active {
+    .social-block__link {
+      opacity: 1;
+
+      &--fb {
+        animation: fadeInUp .5s both 150ms;
+      }
+
+      &--insta {
+        animation: fadeInUp .75s both 250ms;
+      }
+
+      &--vk {
+        animation: fadeInUp 1s both 350ms;
+      }
+    }
+
+    &:hover {
+      .social-block__toggler:not(:hover) {
+        background-color: $c-purple;
+        color: $c-light;
+        &::before {
+          background-color: $c-purple;
+        }
+        svg {
+          color: currentColor;
+        }
+      }
+    }
+  }
 }
 
 .social-block__toggler {
   @include btn-reset;
   position: relative;
+  transition: all 0.5s ease;
   display: block;
   width: 4rem;
   height: 4rem;
@@ -33,8 +65,8 @@
     height: 100%;
     border-radius: 50%;
     background-color: $c-light;
-    border: 2px solid $c-light;
     z-index: -1;
+    transition: all 0.5s ease;
   }
 
   svg {
@@ -45,7 +77,7 @@
   }
 
   &:hover,
-  .social-block--active & {
+  .social-block--active {
     color: $c-purple;
 
     &::before {
@@ -75,8 +107,6 @@
     &::before {
       width: 100%;
       height: 100%;
-      background-color: $c-purple;
-      border-color: $c-purple;
     }
   }
 }
@@ -87,7 +117,6 @@
   top: 100%;
   right: 0;
   margin-top: 1.5rem;
-  opacity: 0;
   pointer-events: none;
 
   @media (min-width: $stop-scaling) {
@@ -163,11 +192,14 @@
 .social-block__link {
   position: relative;
   display: block;
+  opacity: 0;
   width: 4rem;
   height: 4rem;
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  transition: all 0.5s ease;
+  animation: fadeOut 0.3s;
 
   @media (min-width: $stop-scaling) {
     width: 40px;

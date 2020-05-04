@@ -186,3 +186,29 @@
 .chat__footer {
   margin-top: auto;
 }
+
+.screen {
+  .chat .form__button {
+    flex-grow: 0;
+  }
+
+  #message-field {
+    width: calc(10% - 21rem);
+    transition: all 0.5s linear;
+    margin-left: auto;
+  }
+
+  &.active #message-field {
+    animation: chatFieldWidth 0.7s both;
+  }
+}
+
+@keyframes chatFieldWidth {
+  from {
+    width: calc(10% - 21rem);
+  }
+
+  to {
+    width: calc(100% - 21rem);
+  }
+}
