@@ -91,6 +91,7 @@
 }
 
 .slider__item-text {
+  opacity: 0;
   margin-top: 3.6rem;
   margin-bottom: 0;
   max-width: 34rem;
@@ -124,6 +125,23 @@
     line-height: 1.5rem;
   }
 }
+
+.screen .swiper-slide-active .slider__item-text {
+  animation: fadeOutLeft 0.5s both 0.5s;
+}
+
+.screen .swiper-slide-next .slider__item-text {
+  animation: fadeOutLeft 0.5s both 0.7s;
+}
+
+.screen.active .swiper-slide-active .slider__item-text {
+  animation: fadeInRight 0.5s both 0.5s;
+}
+
+.screen.active .swiper-slide-next .slider__item-text {
+  animation: fadeInRight 0.5s both 0.7s;
+}
+
 
 .slider__controls {
   position: absolute;
