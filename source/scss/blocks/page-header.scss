@@ -130,6 +130,8 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transition: all ease 1s;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -251,6 +253,7 @@
       background-color: $c-purple;
       transition: all 0.5s ease;
       width: 0;
+      left: auto;
       right: 0;
 
       @media (min-width: $stop-scaling) {
@@ -273,7 +276,6 @@
 
     &.active {
       &::after {
-        width: 100%;
         display: block;
         background-color: $c-light;
       }
@@ -310,5 +312,32 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+body.page--loaded {
+  .page-header__logo {
+    animation: logoFadeInRight 1s both;
+    animation-timing-function: cubic-bezier(0.32, 0.96, 0.58, 1);
+  }
+
+  .page-header__nav {
+    opacity: 1;
+  }
+
+  .page-header__menu a.active {
+    &::after {
+      left: 0;
+      width: 100%;
+      display: block;
+      background-color: $c-light;
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        background-color: $c-purple;
+      }
+    }
   }
 }
