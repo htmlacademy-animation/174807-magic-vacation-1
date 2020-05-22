@@ -13,11 +13,11 @@
       opacity: 1;
 
       &--fb {
-        animation: fadeInUp .5s both 150ms;
+        animation: fadeInUp 0.5s both 150ms;
       }
 
       &--insta {
-        animation: fadeInUp .75s both 250ms;
+        animation: fadeInUp 0.75s both 250ms;
       }
 
       &--vk {
@@ -36,6 +36,15 @@
           color: currentColor;
         }
       }
+    }
+  }
+}
+
+body.page--loaded {
+  .social-block__toggler {
+    &::before {
+      animation: socialBlockToggler 0.5s none;
+      animation-timing-function: ease-out;
     }
   }
 }
@@ -79,7 +88,9 @@
   &:hover,
   .social-block--active {
     color: $c-purple;
+  }
 
+  &:hover {
     &::before {
       width: 112.5%;
       height: 112.5%;
@@ -114,9 +125,11 @@
 .social-block__list {
   @include list-reset;
   position: absolute;
+  opacity: 0;
   top: 100%;
   right: 0;
   margin-top: 1.5rem;
+  transition: all 0.5s ease;
   pointer-events: none;
 
   @media (min-width: $stop-scaling) {

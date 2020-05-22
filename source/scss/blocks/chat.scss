@@ -192,13 +192,13 @@
     flex-grow: 0;
   }
 
-  #message-field {
+  .chat .form__field {
     width: calc(10% - 21rem);
     transition: all 0.5s linear;
     margin-left: auto;
   }
 
-  &.active #message-field {
+  &.active .chat .form__field {
     animation: chatFieldWidth 0.7s both;
   }
 }

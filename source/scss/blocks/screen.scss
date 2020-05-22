@@ -46,6 +46,8 @@
   color: $c-dark;
   background-color: $c-light;
   z-index: 1;
+  animation: footerSlideInTop 1s both;
+  animation-timing-function: cubic-bezier(0.32, 0.96, 0.58, 1);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
