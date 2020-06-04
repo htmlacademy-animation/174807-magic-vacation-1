@@ -1,13 +1,13 @@
 // modules
-import mobileHeight from './modules/mobile-height-adjust.js';
-import slider from './modules/slider.js';
-import menu from './modules/menu.js';
-import footer from './modules/footer.js';
-import chat from './modules/chat.js';
-import result from './modules/result.js';
-import form from './modules/form.js';
-import social from './modules/social.js';
-import FullPageScroll from './modules/full-page-scroll';
+import mobileHeight from "./modules/mobile-height-adjust.js";
+import slider from "./modules/slider.js";
+import menu from "./modules/menu.js";
+import footer from "./modules/footer.js";
+import chat from "./modules/chat.js";
+import result from "./modules/result.js";
+import form from "./modules/form.js";
+import social from "./modules/social.js";
+import FullPageScroll from "./modules/full-page-scroll";
 
 // init modules
 mobileHeight();
@@ -23,6 +23,6 @@ const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
 
 document.addEventListener(`DOMContentLoaded`, () => {
-  const $body = document.querySelector(`body`);
-  $body.classList.add(`page--loaded`);
+  const bodyContainer = document.querySelector(`body`);
+  bodyContainer.classList.add(`page--loaded`);
 });
