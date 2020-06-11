@@ -94,3 +94,13 @@
     height: 100%;
   }
 }
+
+@keyframes fullpageOverlay {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 100%;
+  }
+}
