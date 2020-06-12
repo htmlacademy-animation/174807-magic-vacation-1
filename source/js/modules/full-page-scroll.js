@@ -1,15 +1,25 @@
 import throttle from 'lodash/throttle';
 
+const ScreenIndex = {
+  START: 0,
+  HISTORY: 1,
+  PRIZES: 2,
+  RULES: 3,
+  GAME: 4,
+};
+
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 2000;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.fullpageOverlayElement = document.querySelector(`.fullpage-overlay`);
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this._pageOverlayAnimationHandler = this._pageOverlayAnimationHandler.bind(this);
   }
 
   init() {
@@ -19,11 +29,23 @@ export default class FullPageScroll {
     this.onUrlHashChanged();
   }
 
+  _pageOverlayAnimationHandler() {
+    this.changePageDisplay();
+    this.fullpageOverlayElement.classList.remove(`fullpage-overlay--animate`);
+    this.fullpageOverlayElement.removeEventListener(`animationend`, this._pageOverlayAnimationHandler);
+  }
+
   onScroll(evt) {
     const currentPosition = this.activeScreen;
     this.reCalculateActiveScreenPosition(evt.deltaY);
     if (currentPosition !== this.activeScreen) {
-      this.changePageDisplay();
+      if (currentPosition === ScreenIndex.HISTORY && this.activeScreen === ScreenIndex.PRIZES) {
+        this.fullpageOverlayElement.addEventListener(`animationend`, this._pageOverlayAnimationHandler);
+        this.fullpageOverlayElement.classList.add(`fullpage-overlay--animate`);
+      } else {
+        this.changePageDisplay();
+      }
+
     }
   }
 
