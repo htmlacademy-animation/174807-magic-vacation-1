@@ -18,7 +18,7 @@ export default class FullPageScroll {
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
-    this.onUrlHashChanged = this.onUrlHashChanged.bind(this);
+    this.onUrlHashChangeHandler = this.onUrlHashChangeHandler.bind(this);
     this._pageOverlayAnimationHandler = this._pageOverlayAnimationHandler.bind(this);
     this.changeVisibilityDisplay = this.changeVisibilityDisplay.bind(this);
     this.screenChangedEventHandler = this.screenChangedEventHandler.bind(this);
@@ -26,9 +26,9 @@ export default class FullPageScroll {
 
   init() {
     document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: false}));
-    window.addEventListener(`popstate`, this.onUrlHashChanged);
+    window.addEventListener(`popstate`, this.onUrlHashChangeHandler);
     document.body.addEventListener(`screenChanged`, this.screenChangedEventHandler);
-    this.onUrlHashChanged();
+    this.onUrlHashChangeHandler();
   }
 
   _pageOverlayAnimationHandler() {
@@ -49,7 +49,7 @@ export default class FullPageScroll {
     }
   }
 
-  onUrlHashChanged() {
+  onUrlHashChangeHandler() {
     const currentScreen = this.activeScreen;
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
 
