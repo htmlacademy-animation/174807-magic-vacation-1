@@ -2,6 +2,7 @@ export default () => {
   const header = document.querySelector(`.js-header`);
   const menuToggler = document.querySelector(`.js-menu-toggler`);
   const menuLinks = document.querySelectorAll(`.js-menu-link`);
+
   const hideMenu = () => {
     header.classList.remove(`page-header--menu-opened`);
     document.body.classList.remove(`menu-opened`);
@@ -21,11 +22,9 @@ export default () => {
     });
   }
 
-  for (let i = 0; i < menuLinks.length; i++) {
-    menuLinks[i].addEventListener(`click`, () => {
-      if (window.innerWidth < 1025) {
-        hideMenu();
-      }
-    });
-  }
+  menuLinks.forEach((menuLink) => menuLink.addEventListener(`click`, () => {
+    if (window.innerWidth < 1025) {
+      hideMenu();
+    }
+  }));
 };
